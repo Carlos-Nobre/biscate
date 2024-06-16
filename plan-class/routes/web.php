@@ -15,7 +15,7 @@ Route::post('user',[UserController::class, 'store'])->name('user.store');
 
 Route::get('user/login', [LoginController::class, 'login'])->name('user.login')->middleware('guest');
 Route::post('user/auth', [LoginController::class, 'auth'])->name('user.auth')->middleware('guest');
-
+Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 
 
 Route::get('biblioteca', function(){ return view('biblioteca');})->middleware('auth');
