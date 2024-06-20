@@ -17,4 +17,4 @@ Route::post('user/auth', [LoginController::class, 'auth'])->name('user.auth')->m
 Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 
 
-Route::get('biblioteca', function(){ return view('biblioteca');})->middleware('auth');
+Route::get('home', function(){ return view('biblioteca');})->name('home')->middleware('auth');

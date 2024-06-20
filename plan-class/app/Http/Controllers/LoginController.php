@@ -24,7 +24,7 @@ class LoginController extends Controller
 
             $request->session()->regenerate();
 
-            return redirect()->intended('biblioteca');
+            return redirect()->intended('home');
         }
         else{
 
