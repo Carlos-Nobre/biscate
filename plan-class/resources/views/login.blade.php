@@ -12,7 +12,7 @@
                 <input class="form-control" type="password"  name='password' placeholder="Digite sua senha ">
                 <button type="submmit" class="btn btn-outline-success submit ">logar</button>
             </form>
-            <a href="{{route('user.register')}}">Não tem uma conta ainda? Cliclk aqui para Cadastrar-se</a>
+            <h6>Não tem uma conta ainda?<a href="{{route('user.register')}}">Click aqui para Cadastrar-se</a></h6>
         </div>
     </div>
 

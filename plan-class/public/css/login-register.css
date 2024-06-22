@@ -14,9 +14,10 @@ body{
     justify-content: center;
 }
 .box{
+    padding: 20px 10px;
     background-color: #E1A037;
     width: 25vw;
-    height: 60vh;
+    height: auto;
     border-radius: 9px;
     display: flex;
     flex-direction: column;
@@ -30,5 +31,6 @@ body{
 }
 .submit{
     width: 22vw;
+    
 }
 
