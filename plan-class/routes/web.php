@@ -22,7 +22,7 @@ Route::get('home', function(){ return view('biblioteca');})->name('home')->middl
 
 #Rotas Dos Livros
 
-Route::get('/home', [BookController::class,'index'])->name('books.index') ->middleware('auth');
+Route::get('/books', [BookController::class,'index'])->name('books.index') ->middleware('auth');
 Route::get('/books/create', [BookController::class,'create'])->name('books.create') ->middleware('auth');
 Route::post('/books', [BookController::class,'store'])->name('books.store') ->middleware('auth');
 Route::get('/books/{book}', [BookController::class,'show'])->name('books.show') ->middleware('auth');

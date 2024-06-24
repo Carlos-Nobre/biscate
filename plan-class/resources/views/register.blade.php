@@ -31,6 +31,7 @@
         <label class="form-label">Confirme sua senha:</label>
         <input class="form-control" type="password" name="password_confirmation" placeholder="Confirme sua senha">
         <button type="submit" class=" btn btn-outline-success submit">Cadastrar</button>
+        <h6>Já tem uma conta?<a href="{{route('login')}}">Click aqui para Logar</a></h6>
         </form>
     </div>
 </div>
