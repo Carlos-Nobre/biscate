@@ -4,6 +4,7 @@
     <div class="container-fluid">
         <div class="box">
             <h3>Login</h3>
+            <span>{{'message'}}</span>
             <form action="{{ route('user.auth') }}" method="POST">
                 @csrf
                 <label class="form-label">Email</label>

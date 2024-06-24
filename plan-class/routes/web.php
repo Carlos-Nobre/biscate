@@ -14,7 +14,7 @@ Route::post('user',[UserController::class, 'store'])->name('user.store');
 #Rotas de Login
 
 Route::get('/', [LoginController::class, 'login'])->name('login')->middleware('guest');
-Route::post('user/auth', [LoginController::class, 'auth'])->name('user.auth')->middleware('guest');
+Route::post('/', [LoginController::class, 'auth'])->name('user.auth')->middleware('guest');
 Route::get('/logout',[LoginController::class, 'logout'])->name('logout');
 
 #Rota de home

@@ -28,7 +28,7 @@ class LoginController extends Controller
         }
         else{
 
-            return view('login')->with('massage','Email ou senha incorretos');
+            return redirect()->back()->with('message','Email ou senha incorretos');
         }
     }
 

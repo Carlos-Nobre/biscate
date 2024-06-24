@@ -7,60 +7,79 @@ use App\Models\Book;
 
 class BookController extends Controller
 {
+    public readonly Book $book;
+
+    public function __construct(){
+       $this->book = new Book;
+    }
     
 
     public function index()
     {
-        $books = Book::all();
         
+        $books = Book::all();
         return view("biblioteca",["books" => $books]);
     }
  
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        return view('book_create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        //
+        $created = $this->book->create([
+                'titulo'=> $request->input('titulo'),
+                'sub_titulo'=> $request->input('sub_titulo'),
+                'autor'=> $request->input('autor'),
+                'edição'=> $request->input('edição'),
+                'editora' => $request->input('editora'),
+                'date_publish' => $request->input('date_publish')
+            ]
+        );
+
+        if($created){
+            return redirect()->back()->with('message','Livro Criado');
+        }
+        else{
+            return redirect()->back()->with('message','Error ao criar');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+
+    public function show(Book $book)
     {
-        //
+       return view('book_details',['book'=> $book]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+
+    public function edit(Book $book)
     {
-        //
+        return view("book_atualize",["book"=> $book]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
-        //
+        $update = $this->book->where('id' , $id)->update($request->except(['_token','_method']));
+
+        if ($update) {
+
+            return redirect()->back()->with('message','Atualizado com sucesso');
+        }
+
+        return redirect()->back()->with('message','Erro na atualzação');
+
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
-        //
+        $this->book->where('id', $id)->delete();
+
+        return redirect()->route('books.index')->with('message','Livro deletado');
     }
 }
