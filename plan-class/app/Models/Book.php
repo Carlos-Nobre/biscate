@@ -15,6 +15,7 @@ class Book extends Model
         'autor',
         'edição',
         'editora',
-        'date_publish'
+        'date_publish',
+        'id_user'
     ];
 }

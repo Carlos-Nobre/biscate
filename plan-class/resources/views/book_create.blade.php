@@ -17,6 +17,8 @@
     <input type="text" name="editora" placeholder="Editora">
     <label for="">Data da Publicação</label>
     <input type="date" name="date_publish" placeholder="Data da publicação">
+    <input type="hidden" name="id_user" value="{{Auth::id()}}">
     <button type="submmit">Salvar</button>
+    <h1>{{Auth::id()}}</h1>
 </form>
 @endsection

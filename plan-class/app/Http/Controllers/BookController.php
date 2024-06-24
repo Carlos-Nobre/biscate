@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -17,8 +19,9 @@ class BookController extends Controller
     public function index()
     {
         
-        $books = Book::all();
-        return view("biblioteca",["books" => $books]);
+        $books = DB::table("books")->where('id_user' , Auth::id()) ->get();
+
+        return view("biblioteca", ["books"=> $books]);
     }
  
 
@@ -36,7 +39,8 @@ class BookController extends Controller
                 'autor'=> $request->input('autor'),
                 'edição'=> $request->input('edição'),
                 'editora' => $request->input('editora'),
-                'date_publish' => $request->input('date_publish')
+                'date_publish' => $request->input('date_publish'),
+                'id_user'=> $request->input('id_user')
             ]
         );
 
