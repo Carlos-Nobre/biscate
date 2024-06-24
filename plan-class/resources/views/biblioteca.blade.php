@@ -3,8 +3,12 @@
 @section('titulo','Biblioteca')
 
 @section('content')
-
-    <a href="{{route('logout')}}">Sair</a>
+    <nav class="navbar">
+        <ul>
+            
+        </ul>
+        <a href="{{route('logout')}}">Sair</a>
+    </nav>
 
     <ul>
             @foreach ($books as $book)
