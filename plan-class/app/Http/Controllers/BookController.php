@@ -8,6 +8,7 @@ use App\Models\Book;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+
 class BookController extends Controller
 {
     public readonly Book $book;
@@ -59,9 +60,13 @@ class BookController extends Controller
                 'id_user'=> $request->input('id_user')
                 ]
              );
+
+             
              
              if($created){
-                return redirect()->back()->with('messege','Livro Cadastrado');
+                $books = DB::table("books")->where('id_user' , Auth::id()) ->get()->simplePaginate(5);
+                return view("meus_livros", ["books"=> $books] , ['user' => Auth::user()])->with('message',  'Livro cadastrado');
+               
             }
 
         }
@@ -86,7 +91,7 @@ class BookController extends Controller
 
         if ($update) {
 
-            return redirect()->back()->with('message','Atualizado com sucesso');
+            return redirect()->route('books.index')->with('message','Atualizado com sucesso');
         }
 
         return redirect()->back()->with('message','Erro na atualzação');
