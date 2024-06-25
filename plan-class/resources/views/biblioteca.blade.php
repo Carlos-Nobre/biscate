@@ -13,6 +13,10 @@
         </ul>
         <h5>Seja bem-vindo, {{Auth::user()->name}}</h5>
     </nav>
+    <div class="container-fluid">
+        <img src="/img/8811-flirty-fboy.png" alt="" style="height: 60vh">
+        <h2>SEJA BEM VINDO, {{Auth::user()->name}}</h2>
+    </div>
 
 
 @endsection

@@ -16,19 +16,40 @@
     <div class="container-fluid">
         <div class="box">
             <h2>SEUS LIVROS</h2>
-            <ul class="meus-livros">
+            <table class="table table-bordered border-black">
+                <th>
+                    Titulo
+                </th>
+                <th>
+                    Autor
+                </th>
+                <th>
+                    Ações
+                </th>
             @foreach ($books as $book)
-                <li>{{$book->titulo}} <a 
-                     href="{{route('books.edit' , ['book'=>$book->id])}}"> edit </a> | <a
-                     href="{{route('books.show' , ['book'=>$book->id])}}">Mais Informações</a></li>
+                <tr>
+                    <td>
+                        {{$book->titulo}}
+                    </td>
+                    <td>
+                        {{$book->autor}}
+                    </td>
+                    <td>
+                        <a href="{{route('books.edit' , ['book'=>$book->id])}}"> edit </a> | <a
+                        href="{{route('books.show' , ['book'=>$book->id])}}">Mais Informações</a>
+                    </td>
+                </tr>
             @endforeach
+            </table>
+            <ul class="pagination">
+                {{$books->links()}}
             </ul>
-            <button class="btn btn-success cadastro"><a href="{{route('books.create')}}" style="text-decoration: none;color:white;"> Adicionar Novo Livro</a></button>
-            @if (session()->has('message'))
-                <div class="alert alert-success" role="alert">{{session()->get('message')}}</div>    
-            @endif
-        </div>
-    </div>
+            
 
-    
+            <button class="btn btn-success cadastro"><a href="{{route('books.create')}}" style="text-decoration: none;color:white;"> Adicionar Novo Livro</a></button>
+        </div>
+        @if (session()->has('message'))
+            <div class="alert alert-success" role="alert">{{session()->get('message')}}</div>    
+        @endif
+    </div>
 @endsection

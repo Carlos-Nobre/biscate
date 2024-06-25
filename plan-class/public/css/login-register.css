@@ -74,14 +74,18 @@ li .a {
 li .a:hover {
     background-color: #eae1bb;
 }
-.meus-livros{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    margin-right: 0;
-
-}
 .cadastro{
     margin-top:20px ;
+}
+.conteudo{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    flex-direction: row;
+}
+img{
+    height: 35vh;
+}
+.text{
+    gap: 20px;
 }

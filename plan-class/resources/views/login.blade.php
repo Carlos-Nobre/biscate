@@ -18,6 +18,7 @@
             <h6>Não tem uma conta ainda?<a href="{{route('user.register')}}">Click aqui para Cadastrar-se</a></h6>
         </div>
     </div>
+    {{-- {{$books->links()}} --}}
 
 @section('content')
 

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('edição');
             $table->string('editora');
             $table->date('date_publish');
+            $table->string('imagem')->default('');
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

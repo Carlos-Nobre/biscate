@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
+use PhpParser\Node\Stmt\Return_;
 
 class UserController extends Controller
 {
@@ -19,7 +20,7 @@ class UserController extends Controller
     }
 
     #RETORNA A VIEW DE REGISTRO 
-    
+
     public function register()
     {
         return view('register');

@@ -36,9 +36,12 @@
             <label for="" class="form-label">Editora:</label>
             <input type="text" name="editora" placeholder="Editora" class="form-control">
             
+            <label for="" class="form-label">Capa do Livro:</label>
+            <input class="form-control" type="text" name="imagem" placeholder="Coloque a url da imagem">
+
             <label for="" class="form-label">Data da Publicação:</label>
             <input type="date" name="date_publish" placeholder="Data da publicação">
-            
+
             <input type="hidden" name="id_user" value="{{Auth::id()}}">
             <button type="submmit" class="btn btn-success">Salvar</button>
         </form>

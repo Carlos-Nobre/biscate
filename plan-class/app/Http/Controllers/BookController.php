@@ -21,9 +21,9 @@ class BookController extends Controller
     public function index()
     {
         
-        $books = DB::table("books")->where('id_user' , Auth::id()) ->get();
+        $books = DB::table("books")->where('id_user' , Auth::id())->simplePaginate(5);
 
-        return view("meus_livros", ["books"=> $books] , ['user' => Auth::user()]);
+        return view("meus_livros", ["books"=> $books] , ['user' => Auth::user()]);;
     }
  
 
@@ -56,15 +56,15 @@ class BookController extends Controller
                 'autor'=> $request->input('autor'),
                 'edição'=> $request->input('edição'),
                 'editora' => $request->input('editora'),
+                'imagem' => $request->input('imagem'),
                 'date_publish' => $request->input('date_publish'),
                 'id_user'=> $request->input('id_user')
                 ]
              );
 
-             
-             
+            
              if($created){
-                $books = DB::table("books")->where('id_user' , Auth::id()) ->get();
+                $books = DB::table("books")->where('id_user' , Auth::id())->simplePaginate(5);
                 return view("meus_livros", ["books"=> $books] , ['user' => Auth::user()])->with('message',  'Livro cadastrado');
                
             }
