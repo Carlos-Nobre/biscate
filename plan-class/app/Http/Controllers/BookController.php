@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,7 @@ class BookController extends Controller
         
         $books = DB::table("books")->where('id_user' , Auth::id()) ->get();
 
-        return view("biblioteca", ["books"=> $books]);
+        return view("meus_livros", ["books"=> $books] , ['user' => Auth::user()]);
     }
  
 
@@ -33,7 +34,22 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
-        $created = $this->book->create([
+        $validator = Validator::make($request->except('_token'),[
+            'titulo'=>['required'] ,
+            'sub_titulo'=>['required'] ,
+            'autor'=>['required'] ,
+            'editora'=>['required'] ,
+            'edição'=>['required'] ,
+            'date_publish'=>['required'] 
+            
+        ]);
+
+        if($validator->fails()){
+            return view('book_create')->with('errors',$validator->errors());
+        }
+        else{
+
+            $created = $this->book->create([
                 'titulo'=> $request->input('titulo'),
                 'sub_titulo'=> $request->input('sub_titulo'),
                 'autor'=> $request->input('autor'),
@@ -41,14 +57,13 @@ class BookController extends Controller
                 'editora' => $request->input('editora'),
                 'date_publish' => $request->input('date_publish'),
                 'id_user'=> $request->input('id_user')
-            ]
-        );
+                ]
+             );
+             
+             if($created){
+                return redirect()->back()->with('messege','Livro Cadastrado');
+            }
 
-        if($created){
-            return redirect()->back()->with('message','Livro Criado');
-        }
-        else{
-            return redirect()->back()->with('message','Error ao criar');
         }
     }
 
