@@ -8,16 +8,16 @@
 @endif
 
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <a>{{ $error }}</a>
-            @endforeach
-        </ul>
-    </div>
-@endif
 <div class="container-fluid">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul class="alertas">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="box">
         <h1>Registrar-se</h1>
         <form action="{{route('user.store')}}" method="POST">
@@ -36,4 +36,3 @@
     </div>
 </div>
 @endsection
-deus

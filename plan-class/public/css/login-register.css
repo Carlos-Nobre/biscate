@@ -89,3 +89,7 @@ img{
 .text{
     gap: 20px;
 }
+.alertas{
+    display: flex;
+    flex-direction: column;
+}

@@ -5,7 +5,7 @@
         <div class="box">
             <h1>Login</h1>
             @if (session('message'))
-                <h5>{{session('message')}}</h5>
+                <div class="alert alert-danger"><h5>{{session('message')}}</h5></div>
             @endif
             <form action="{{ route('user.auth') }}" method="POST">
                 @csrf

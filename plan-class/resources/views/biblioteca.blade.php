@@ -15,7 +15,8 @@
     </nav>
     <div class="container-fluid">
         <img src="/img/8811-flirty-fboy.png" alt="" style="height: 60vh">
-        <h2>SEJA BEM VINDO, {{Auth::user()->name}}</h2>
+        <h2 style="color: white">SEJA BEM VINDO, {{Auth::user()->name}} . 
+            <br>Aproveite bem seu sistema de livros.</h2>
     </div>
 
 
